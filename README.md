@@ -1,2 +1,2 @@
 # vue-boilerplate
-适配ft2.0的vue配置文件
+适配ft2.0的vue样板文件
