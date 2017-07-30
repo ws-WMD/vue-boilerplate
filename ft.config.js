@@ -39,12 +39,12 @@ exports.lint = { // 基于standard的
 };
  */
 
-function cssLoaders(node_env) {
+function cssLoaders(options) {
 
   var cssLoader = {
     loader: 'css-loader',
     options: {
-      minimize: node_env === 'production'
+      minimize: options.env === 'production'
     }
   }
 
@@ -60,14 +60,10 @@ function cssLoaders(node_env) {
 
     // Extract CSS when that option is specified
     // (which is the case during production build)
-    if (node_env === 'production') {
-      return ExtractTextPlugin.extract({
-        use: loaders,
-        fallback: 'vue-style-loader'
-      })
-    } else {
-      return ['vue-style-loader'].concat(loaders)
-    }
+    return ExtractTextPlugin.extract({
+      use: loaders,
+      fallback: 'vue-style-loader'
+    })
   }
 
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
@@ -83,7 +79,7 @@ function cssLoaders(node_env) {
 }
 exports.config = function () {
   return {
-    webpackConfig: function webpackConfig(config, node_env) {
+    webpackConfig: function webpackConfig(config, options) {
       config.resolve.alias = {
         'vue$': 'vue/dist/vue.esm.js',
         // '@': '/src'
@@ -95,7 +91,7 @@ exports.config = function () {
           test: /\.vue$/,
           loader: 'vue-loader',
           options: {
-            loaders: cssLoaders(node_env)
+            loaders: cssLoaders(options)
           }
         },
         {
@@ -122,15 +118,19 @@ exports.config = function () {
       ]);
       config.plugins.push(new webpack.DefinePlugin({
         'process.env': {
-          NODE_ENV: JSON.stringify(node_env)
+          NODE_ENV: JSON.stringify(options.env === 'production'? options.env: 'development')
         },
         BASE_URL: JSON.stringify('https://www.easy-mock.com/mock/590c349f87cce4690fed000b/boui')
       }))
-      if (node_env === 'production') {
-        config.plugins.push(new ExtractTextPlugin({
-          filename: 'style@[chunkhash].css'
-        }));
+      var filename = 'style@[chunkhash].css';
+      if (options.env === 'development') {
+        filename = 'style@dev.css'
+      } else if (options.env === 'location') {
+        filename = 'style.css'
       }
+      config.plugins.push(new ExtractTextPlugin({
+        filename: filename
+      }));
       config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: function (module, count) {
