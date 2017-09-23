@@ -29,6 +29,7 @@ node_modules
 *.md~
 *.hbs~
 *.json~
+*.vue~
 
 #eslint and npm init file
 #tern.js
