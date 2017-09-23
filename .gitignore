@@ -13,3 +13,24 @@ results
 
 npm-debug.log
 node_modules
+
+#vim backup files
+*.html~
+*.un~
+*.js~
+*.swp
+*.gitignore~
+*.config~
+*.swo
+*.swn
+*.swm
+*.tern-project~
+.dev~
+*.md~
+*.hbs~
+*.json~
+
+#eslint and npm init file
+#tern.js
+*.tern-project
+
