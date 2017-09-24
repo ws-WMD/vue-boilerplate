@@ -1,0 +1,13 @@
+<template>
+  <header>
+    <slot></slot>
+    <slot></slot>
+    <section></section>
+    <router-link></router-link>
+    <section></section>
+    <slot></slot>
+    <slot></slot>
+    <slot></slot>
+    <slot></slot>
+  </header>
+</template>
