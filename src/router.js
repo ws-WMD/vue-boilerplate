@@ -1,8 +1,8 @@
-import Home from '@/modules/Home';
+import Shop from '@/modules/shop'
 
 export default [
   {
     path: '/',
-    component: Home
+    component: Shop
   }
 ];
