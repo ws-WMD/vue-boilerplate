@@ -1,12 +1,14 @@
 import LeftMenu from './LeftMenu'
 import Tab from './tab'
 import Top from './Top'
+import SideNav from './SideNav'
 
 const components = {
   LeftMenu,
   Tab,
   TabPane: Tab.Pane,
   Top,
+  SideNav,
 }
 
 const install = function(Vue, opts = {}) {

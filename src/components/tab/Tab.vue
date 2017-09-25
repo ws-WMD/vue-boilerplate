@@ -43,6 +43,7 @@
             name: pane.name,
           })
         })
+        this.updateVisiblePane()
       },
       updateVisiblePane() {
         this.getTabs.forEach((pane, index) => { pane.show = this.activeKey === pane.name })
