@@ -1,5 +1,6 @@
 <template>
   <header>
+    <div>头部</div>
     <slot></slot>
     <slot></slot>
     <section></section>
