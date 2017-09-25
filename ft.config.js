@@ -37,7 +37,7 @@ exports.lint = { // 基于standard的
   css: ['.css', '.scss', '.sass', '.less'],
   js: ['.js', '.jsx', '.vue']
 };
- */
+*/
 
 function cssLoaders(options) {
 
@@ -114,6 +114,10 @@ exports.config = function () {
             limit: 10000,
             name: 'fonts/[name].[hash:7].[ext]'
           }
+        },
+        {
+          test: /\.s[a|c]ss$/,
+          loader: 'style!css!sass'
         }
       ]);
       config.plugins.push(new webpack.DefinePlugin({
