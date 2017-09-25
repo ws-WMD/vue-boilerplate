@@ -1,10 +1,11 @@
 import LeftMenu from './LeftMenu'
-import Tab from './Tab'
+import Tab from './tab'
 import Top from './Top'
 
 const components = {
   LeftMenu,
   Tab,
+  TabPane: Tab.Pane,
   Top,
 }
 
