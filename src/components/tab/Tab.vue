@@ -68,7 +68,7 @@
 
 <style lang="scss" scoped>
   .tab-container {
-    margin: .4rem 0;
+    margin: .4rem 0 0 0;
   }
   ul {
     list-style-type: none;
@@ -86,5 +86,11 @@
   }
   .clearfix {
     clear: both;
+  }
+  .tab-content {
+    flex: 1;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
   }
 </style>

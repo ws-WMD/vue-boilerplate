@@ -1,27 +1,30 @@
 <template>
-  <div>
-    <top
-    :showBack="true"></top>
-    <shop-header></shop-header>
-    <tab value="category">
+  <div class="shop">
+    <div class="shop-info">
+      <top
+      :showBack="true"></top>
+      <shop-header></shop-header>
+    </div>
+    <tab value="category" class="shop-food">
       <tab-pane name="category" label="商品">
-        <side-nav :nav="sideNav"></side-nav>
+        <side-nav :nav="sideNav" value="drink"></side-nav>
+        <cart></cart>
       </tab-pane>
       <tab-pane name="comment" label="评价">
         <p>暂时没有评价</p>
       </tab-pane>
     </tab>
-    
   </div>
 </template>
 
 <script>
   import ShopHeader from './ShopHeader'
-
+  import FoodList from './foodList'
+  import Cart from './Cart'
 
   export default {
     name: 'shop',
-    components: { ShopHeader },
+    components: { ShopHeader, FoodList, Cart },
     props: {},
     data() {
       return {
@@ -66,3 +69,24 @@
     },
   }
 </script>
+
+<style lang="scss" scoped>
+  .shop {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .shop-food {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .shop-food .pane {
+    height: 100%;
+    overflow-y: hidden;
+    flex: 1;
+  }
+</style>

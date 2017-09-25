@@ -1,5 +1,5 @@
 <template>
-  <div v-show="show"><slot></slot></div>
+  <div class="pane" v-show="show"><slot></slot></div>
 </template>
 
 <script>

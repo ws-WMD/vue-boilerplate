@@ -41,9 +41,17 @@
 <style lang="scss" scoped>
   .side-nav {
     width: 100%;
+    height: 100%;
     position: relative;
     overflow-y: hidden;
     display: flex;
+    flex: 1;
+    .left, .right {
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
     .left {
       flex: 1;
       ul {
@@ -54,7 +62,11 @@
         li {
           padding: .35rem .15rem;
           border-bottom: .05rem solid #ededed;
-          border-left: .15rem solid #f8f8f8;
+          border-left: .1rem solid #f8f8f8;
+        }
+        .active {
+          border-left: .1rem solid #3190e8;
+          background-color: #fff;
         }
       }
     }
