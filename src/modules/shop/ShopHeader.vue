@@ -54,9 +54,12 @@
     }
     .shop-avatar {
       flex: 1;
-      width: 1.7rem;
-      height: 1.7rem;
-      border: .01rem solid black;
+      padding: 0 .3rem;
+      img {
+        width: 1.7rem;
+        height: 1.7rem;
+        border: .01rem solid black;
+      }
     }
     .shop-info {
       flex: 2;

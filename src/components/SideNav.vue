@@ -2,12 +2,12 @@
   <div class="side-nav">
     <div class="left">
       <ul class="nav">
-        <li v-for="(item, index) in navList" :class="{ active: activeNav(item) }">
+        <li v-for="(item, index) in navList" :class="{ active: activeNav(item) }" @click="handleNavClick(index)">
           {{ item.label }}
         </li>
       </ul>
     </div>
-    <div class="right"></div>
+    <div class="right" ref="content" @scroll="handleScroll"><slot name="content"></slot></div>
   </div>
 </template>
 
@@ -30,9 +30,45 @@
         activeKey: this.value,
       }
     },
+    computed: {
+      right() {
+        return this.$refs.content
+      },
+      scrollEl() {
+        return this.right.querySelector(`#${this.activeKey}`)
+      },
+    },
     methods: {
       activeNav(item) {
         return item.name === this.activeKey
+      },
+      rightScrollTop() {
+        return this.right.scrollTop
+      },
+      scrollToActive() {
+        
+      },
+      handleNavClick(index) {
+        this.activeKey = this.navList[index].name
+        try {
+          this.right.scrollTop = this.scrollEl.offsetTop
+        }
+        catch (e) {
+          
+        }
+      },
+      handleScroll() {
+        this.$emit('content-scroll', this.rightScrollTop())
+      },
+    },
+    mounted() {
+      this.$on('scrolled', (name) => {
+        this.activeKey = name
+      })
+    },
+    watch: {
+      activeKey(val) {
+        this.scrollToActive()
       },
     },
   }
