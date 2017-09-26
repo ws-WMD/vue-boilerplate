@@ -16,3 +16,7 @@
     <router-view transition transition-mode="out-in"></router-view>
   </div>
 </template>
+<style lang="scss">
+  	@import './style/common';
+</style>
+

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <head-top>
-      <span class="head--logo">ele.me</span>
+    <head-top signin-up='home'>
+      <span slot='logo' class="head--logo" @click='reload'>ele.me</span>
     </head-top>
     <nav class="city--nav">
       <div class="city--tip">
@@ -12,7 +12,7 @@
     <div id='hot-city--container'>
       <h4 class="city-title">热门城市</h4>
       <ul class="city-list--ul clear">
-        <router-link :to="'/msite' + item.id" v-for='item in hotCity' :key='item.id'>
+        <router-link tag='li' :to="'/msite' + item.id" v-for='item in hotCity' :key='item.id'>
           {{item.name}}
         </router-link>
       </ul>
@@ -24,7 +24,7 @@
             <span v-if='index == 0'>(按字母排序)</span>
           </h4>
           <ul class="groupcity-name--container city-list--ul clear">
-            <router-link :to="'/msite' + item.id" v-for='item in value' :key='item.id' class='ellipsis'>
+            <router-link tag='li' :to="'/msite' + item.id" v-for='item in value' :key='item.id' class='ellipsis'>
               {{item.name}}
             </router-link>
           </ul>
@@ -80,12 +80,13 @@ import headTop from '@/modules/head';
 </script>
 <style lang='scss'>
 @import '../style/mixin';
+
 .city--nav{
   padding-top: 2.35rem;
   border-top: 1px solid $bc;
   background-color: #fff;
   margin-bottom: 0.4rem;
-  .city_tip{
+  .city--tip{
     @include fj;
     line-height: 1.45rem;
     padding: 0 0.45rem;
@@ -131,7 +132,7 @@ import headTop from '@/modules/head';
   margin-bottom: 0.4rem;
   background-color: #fff;
   border-bottom: 1px solid $bc;
-  .groupcity_name_container{
+  .groupcity-name--container{
     li{
       color: #666;
     }
