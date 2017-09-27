@@ -56,7 +56,7 @@ import headTop from '@/modules/head';
         this.groupCity = json.data;
       })
     },
-    components: headTop,
+    components: { headTop},
     computed: {
       sortGroupCity() {
         let sortobj = {};
@@ -80,6 +80,14 @@ import headTop from '@/modules/head';
 </script>
 <style lang='scss'>
 @import '../style/mixin';
+
+.head--logo{
+  left: 0.4rem;
+  font-weight: 400;
+  @include sc(0.7rem, #fff);
+  @include wh(2.3rem, 0.7rem);
+  @include ct;
+}
 
 .city--nav{
   padding-top: 2.35rem;
