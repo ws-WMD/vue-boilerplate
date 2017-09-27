@@ -4,6 +4,7 @@
       <ul class="nav">
         <li v-for="(item, index) in navList" :class="{ active: activeNav(item) }" @click="handleNavClick(index)">
           {{ item.label }}
+          <i class="count" v-show="item.count > 0">{{ item.count }}</i>
         </li>
       </ul>
     </div>
@@ -26,7 +27,7 @@
     },
     data() {
       return {
-        navList: this.nav,
+        navList: this.createCount(),
         activeKey: this.value,
       }
     },
@@ -39,6 +40,12 @@
       },
     },
     methods: {
+      createCount() {
+        return this.nav.map((element) => {
+          element.count = 0
+          return element
+        })
+      },
       activeNav(item) {
         return item.name === this.activeKey
       },
@@ -65,8 +72,27 @@
       this.$on('scrolled', (name) => {
         this.activeKey = name
       })
+      this.$on('increase', (params) => {
+        this.navList = this.navList.map((element) => {
+          if (element.name === params.listName) {
+            element.count++
+          }
+          return element
+        })
+      })
+      this.$on('decrease', (params) => {
+        this.navList = this.navList.map((element) => {
+          if (element.name === params.listName) {
+            element.count--
+          }
+          return element
+        })
+      })
     },
     watch: {
+      nav() {
+        this.navList = this.createCount()
+      },
       activeKey(val) {
         this.scrollToActive()
       },
@@ -99,6 +125,24 @@
           padding: .35rem .15rem;
           border-bottom: .05rem solid #ededed;
           border-left: .1rem solid #f8f8f8;
+          position: relative;
+          i {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: .2rem;
+            height: .2rem;
+            border: .01rem solid red;
+            border-radius: 100%;
+            margin: .12rem .12rem 0 0;
+            display: block;
+            color: white;
+            background-color: red;
+            font-style: normal;
+            line-height: .2rem;
+            text-align: center;
+            font-size: 12px;
+          }
         }
         .active {
           border-left: .1rem solid #3190e8;

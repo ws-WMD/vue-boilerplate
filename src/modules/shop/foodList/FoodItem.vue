@@ -9,16 +9,17 @@
       <span class="food-sales">{{ sales }}</span>
       <span class="food-price">{{ `￥${price}` }}</span>
     </div>
-    <counter></counter>
+    <counter class="right-bottom" @increase="handleCountChange($event, 'increase')" @decrease="handleCountChange($event, 'decrease')"></counter>
   </div>
 </template>
 
 <script>
-  import Counter from './Counter'
+  import Emitter from '@/mixins/emitter';
 
   export default {
     name: 'FoodItem',
-    components: { Counter },
+    components: {},
+    mixins: [ Emitter ],
     props: {
       imgPath: {
         type: String,
@@ -48,6 +49,17 @@
       return {
 
       }
+    },
+    methods: {
+      handleCountChange(count, event) {
+        this.dispatch('Shop', event, {
+          name: this.name,
+          label: this.label,
+          price: this.price,
+          count,
+          listName: this.$parent.name,
+        })
+      },
     },
   }
 </script>
@@ -84,6 +96,12 @@
         font-size: 20px;
         color: red;
       }
+    }
+    .right-bottom {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      margin: 0 .12rem .12rem 0;
     }
   }
 </style>

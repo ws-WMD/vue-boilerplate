@@ -9,7 +9,7 @@
 
 <script>
   export default {
-    name: 'top',
+    name: 'Top',
     props: {
       showBack: {
         type: Boolean,

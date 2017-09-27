@@ -1,0 +1,36 @@
+{
+  "data": [{
+    "label": "热销",
+    "name": "hot"
+  }, {
+    "label": "优惠",
+    "name": "discount"
+  }, {
+    "label": "套餐",
+    "name": "meal"
+  }, {
+    "label": "面食",
+    "name": "noodles"
+  }, {
+    "label": "汤类",
+    "name": "soup"
+  }, {
+    "label": "小吃",
+    "name": "snack"
+  }, {
+    "label": "饮料",
+    "name": "drink"
+  }, {
+    "label": "支持",
+    "name": "support"
+  }, {
+    "label": "鸡汤",
+    "name": "bullshit"
+  }, {
+    "label": "农药",
+    "name": "tencent"
+  }, {
+    "label": "猪肉",
+    "name": "netease"
+  }]
+}

@@ -2,6 +2,7 @@ import LeftMenu from './LeftMenu'
 import Tab from './tab'
 import Top from './Top'
 import SideNav from './SideNav'
+import Counter from './Counter'
 
 const components = {
   LeftMenu,
@@ -9,6 +10,7 @@ const components = {
   TabPane: Tab.Pane,
   Top,
   SideNav,
+  Counter,
 }
 
 const install = function(Vue, opts = {}) {

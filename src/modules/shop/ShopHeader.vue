@@ -17,7 +17,7 @@
 
 <script>
   export default {
-    name: 'shop-header',
+    name: 'ShopHeader',
     props: {
       avatarPath: {
         type: String,
