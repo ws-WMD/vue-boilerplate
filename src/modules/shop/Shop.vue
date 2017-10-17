@@ -9,14 +9,15 @@
       <tab-pane name="category" label="商品">
         <side-nav :nav="sideNav" value="hot">
           <template slot="content">
-            <food-list v-for="item in food"
+            <food-list v-for="(item, index) in food"
+            :key="index"
             :name="item.name"
             :label="item.label"
             :description="item.description"
             :food="item.food"></food-list>
           </template>
         </side-nav>
-        <cart></cart>
+        <cart :deliveryPrice="deliveryPrice"></cart>
       </tab-pane>
       <tab-pane name="comment" label="评价">
         <p>暂时没有评价</p>
@@ -63,6 +64,7 @@
       fetch('./src/mock/food.json')
       .then((response) => {
         response.json().then((data) => {
+          this.deliveryPrice = data.deliveryPrice
           this.food = data.data
         })
       })
