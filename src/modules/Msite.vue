@@ -46,8 +46,9 @@ import headTop from './head';
   import shopList from '@/components/shopList';
   import {msiteAddress, msiteFoodTypes, cityGuess} from '@/service/getData';
 
-  import '../plugins/swiper.min.js';
-  import '../style/swiper.min.css';
+  //require('@/plugins/swiper.min.js');
+  //import '@/style/swiper.min.css';
+
   export default {
     data() {
       return {
@@ -87,7 +88,6 @@ import headTop from './head';
     },
     components: {
       headTop,
-      shopList,
       footGuide,
     },
     computed: {
@@ -106,74 +106,74 @@ import headTop from './head';
 </script>
 <style lang='scss' scoped>
 @import '../style/mixin';
-	.link-search{
-		left: .8rem;
-		@include wh(.9rem, .9rem);
-		@include ct;
-	}
-	.msite-title{
-		@include center;
-        width: 50%;
-        color: #fff;
+.link-search{
+  left: .8rem;
+  @include wh(.9rem, .9rem);
+  @include ct;
+}
+.msite-title{
+  @include center;
+  width: 50%;
+  color: #fff;
+  text-align: center;
+  margin-left: -0.5rem;
+  .title_text{
+    @include sc(0.8rem, #fff);
+    text-align: center;
+    display: block;
+  }
+}
+.msite-nav{
+  padding-top: 2.1rem;
+  background-color: #fff;
+  border-bottom: 0.025rem solid $bc;
+  height: 10.6rem;
+  .swiper-container{
+    @include wh(100%, auto);
+    padding-bottom: 0.6rem;
+    .swiper-pagination{
+      bottom: 0.2rem;
+    }
+  }
+  .fl-back{
+    @include wh(100%, 100%);
+  }
+}
+.food-types--container{
+  display:flex;
+  flex-wrap: wrap;
+  .link-to-food{
+    width: 25%;
+    padding: 0.3rem 0rem;
+    @include fj(center);
+    figure{
+      img{
+        margin-bottom: 0.3rem;
+        @include wh(1.8rem, 1.8rem);
+      }
+      figcaption{
         text-align: center;
-        margin-left: -0.5rem;
-        .title_text{
-            @include sc(0.8rem, #fff);
-            text-align: center;
-            display: block;
-        }
-	}
-	.msite-nav{
-		padding-top: 2.1rem;
-		background-color: #fff;
-		border-bottom: 0.025rem solid $bc;
-		height: 10.6rem;
-		.swiper-container{
-			@include wh(100%, auto);
-			padding-bottom: 0.6rem;
-			.swiper-pagination{
-				bottom: 0.2rem;
-			}
-		}
-		.fl-back{
-			@include wh(100%, 100%);
-		}
-	}
-	.food-types--container{
-		display:flex;
-		flex-wrap: wrap;
-		.link-to-food{
-			width: 25%;
-			padding: 0.3rem 0rem;
-			@include fj(center);
-			figure{
-				img{
-					margin-bottom: 0.3rem;
-					@include wh(1.8rem, 1.8rem);
-				}
-				figcaption{
-					text-align: center;
-					@include sc(0.55rem, #666);
-				}
-			}
-		}
-	}
-	.shop_list_container{
-		margin-top: .4rem;
-		border-top: 0.025rem solid $bc;
-		background-color: #fff;
-		.shop_header{
-			.shop_icon{
-				fill: #999;
-				margin-left: 0.6rem;
-				vertical-align: middle;
-				@include wh(0.6rem, 0.6rem);
-			}
-			.shop_header_title{
-				color: #999;
-				@include font(0.55rem, 1.6rem);
-			}
-		}
-	}
+        @include sc(0.55rem, #666);
+      }
+    }
+  }
+}
+.shop_list_container{
+  margin-top: .4rem;
+  border-top: 0.025rem solid $bc;
+  background-color: #fff;
+  .shop_header{
+    .shop_icon{
+      fill: #999;
+      margin-left: 0.6rem;
+      vertical-align: middle;
+      @include wh(0.6rem, 0.6rem);
+    }
+    .shop_header_title{
+      color: #999;
+      @include font(0.55rem, 1.6rem);
+    }
+  }
+}
 
 </style>
