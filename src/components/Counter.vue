@@ -35,6 +35,14 @@
         this.foodCount = this.count
       },
     },
+    mounted () {
+      this.$on('add', () => {
+        this.foodCount++
+      })
+      this.$on('minus', () => {
+        this.foodCount--
+      })
+    },
   }
 </script>
 
