@@ -1,5 +1,6 @@
 import Home from '@/modules/Home';
 import Msite from '@/modules/Msite';
+import Shop from '@/modules/shop'
 
 export default [
   {
@@ -9,5 +10,9 @@ export default [
   {
     path: '/msite',
     component: Msite
+  },
+  {
+    path: '/shop',
+    component: Shop
   }
 ];
