@@ -46,28 +46,12 @@ export default {
 	},
 	data() {
 		return {
-			searchValue: '', //搜索框的值
-			// shoplist: [{
-			// 	id: '123',
-			// 	name: '子母粉丝',
-			// 	imagePath:'',
-			// 	saleCount: '12',
-			// 	salePrice: '23',
-			// 	distance: '123'
-			// },{
-			// 	id: '123',
-			// 	name: '子母粉丝',
-			// 	imagePath:'',
-			// 	saleCount: '12',
-			// 	salePrice: '23',
-			// 	distance: '123'
-			// }], //搜索结果
+			searchValue: '', 
 			shoplist: [],
 			historylist: [],
 			showHistory: true,
 			emptyResult: false
 		}
-		
 	},
 	mounted() {
 		if(getStore('searchHistory') != 'undefined') {
@@ -92,7 +76,6 @@ export default {
 			}
 			this.showHistory = false; //隐藏历史纪录
 			this.shoplist = await this.searchShop();
-			this.emptyResult  = !this.shoplist.length;
 
 			//判断是否新增历史纪录
 			let history;
@@ -125,26 +108,12 @@ export default {
 			setStore('searchHistory', this.history)
 		},
 		searchShop() {
-			return [{
-				id: '123',
-				name: '子母粉丝',
-				imagePath:'',
-				saleCount: '12',
-				salePrice: '23',
-				distance: '123'
-			},{
-				id: '123',
-				name: '子母粉丝',
-				imagePath:'',
-				saleCount: '12',
-				salePrice: '23',
-				distance: '123'
-			}]
-			// fetch(url, {method: 'GET'}).then(function(res) {
-			// 	return res.json();
-			// }).then(function(json) {
-
-			// });
+			fetch('https://www.easy-mock.com/mock/59e60c826d45b6646cb9e1a7/elem-demo/shoplist.action', {method: 'GET'}).then((res) => {
+					res.json().then( data => {
+						this.shoplist = data.data;
+						this.emptyResult  = !this.shoplist.length;
+					});
+			});
 		}
 	}
 }

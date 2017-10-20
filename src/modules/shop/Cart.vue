@@ -8,11 +8,11 @@
       </div>
     </div>
     <div class="cart-bill">
-      <button>去结算</button>
+      <button v-text="billButtonText" :disabled="isBillDisabled"></button>
     </div>
     <div class="cart-detail" v-show="showDetail">
       <ul>
-        <li v-for="item in foodInCart">
+        <li v-for="(item, index) in foodInCart" :key="index">
           <span>{{ item.label }}</span>
           <span>{{ `￥${item.price}` }}</span>
           <counter :count="item.count" @increase="handleCountChange($event, 'increase')" @decrease="handleCountChange($event, 'decrease')"></counter>
@@ -30,6 +30,10 @@
         type: Array,
         default: () => [],
       },
+      deliveryPrice: {
+        type: Number,
+        default: 0,
+      },
     },
     data() {
       return {
@@ -37,6 +41,7 @@
         price: 0,
         showDetail: false,
         foodInCart: this.food,
+        isBillDisabled: true,
       }
     },
     methods: {
@@ -45,6 +50,17 @@
       },
       handleCountChange(count, $event) {
         
+      },
+    },
+    computed: {
+      billButtonText() {
+        const diff = this.deliveryPrice - this.price
+        return diff > 0 ? `还差￥${diff}起送` : '去结算'
+      },
+    },
+    watch: {
+      price(val) {
+        this.isBillDisabled = !(val >= this.deliveryPrice)
       },
     },
     mounted() {
@@ -104,7 +120,7 @@
       button {
         width: 100%;
         height: 100%;
-
+        font-size: 12px;
       }
     }
     .cart-detail {

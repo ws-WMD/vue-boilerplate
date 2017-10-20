@@ -4,6 +4,7 @@ import ComfirmOrder from '@/modules/comfirmOrder'
 import Remark from '@/modules/comfirmOrder/remark'
 import CheckTicket from '@/modules/comfirmOrder/checkTicket'
 import AddAddress from '@/modules/comfirmOrder/addAddress'
+import NewAddress from '@/modules/comfirmOrder/newAddress'
 
 export default [
   {
@@ -24,6 +25,9 @@ export default [
   },{
     path: '/comfirmOrder/addAddress',
     component: AddAddress
+  },{
+    path: '/comfirmOrder/newAddress',
+    component: NewAddress
   }
 
 ];

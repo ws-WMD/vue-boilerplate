@@ -1,4 +1,5 @@
 {
+  "deliveryPrice": 20,
   "data": [{
     "label": "热销",
     "name": "hot",

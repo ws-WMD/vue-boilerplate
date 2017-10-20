@@ -155,7 +155,6 @@ export default {
       return remark;
     },
     isNeedTicket() {
-      console.log(JSON.parse(getStore('isNeedTicket')));
       return JSON.parse(getStore('isNeedTicket'));
     }
   },
@@ -185,6 +184,8 @@ export default {
   }
   ul {
     margin-top: 3px;
+    padding-left: 0;
+    list-style-type: none;
   }
   .order-remark {
       margin-bottom:2px;
